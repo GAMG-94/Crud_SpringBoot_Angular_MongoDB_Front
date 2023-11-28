@@ -1,0 +1,27 @@
+<div class="container">
+  <table class="table table-striped table-dark table-hover text-center">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">NAME</th>
+        <th scope="col">PRICE</th>
+        <th scope="col">VIEW</th>
+        <th scope="col">EDIT</th>
+        <th scope="col">DELETE</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let prod of products">
+        <th>{{ prod.id }}</th>
+        <td>{{ prod.name }}</td>
+        <td>{{ prod.price }} $</td>
+        <td><div class="btn btn-outline-primary fw-bold" routerLink="/detail/{{prod.id}}">View <i class="fa-solid fa-eye"></i></div></td>
+        <td><div class="btn btn-outline-warning fw-bold" routerLink="/update">Update <i class="fa-solid fa-file-pen"></i></div></td>
+        <td><div class="btn btn-outline-danger fw-bold">Delete <i class="fa-solid fa-trash"></i></div></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="mt-3">
+    <button routerLink="/create" class="btn btn-success btn-lg fw-bold">Add Product <i class="fa-solid fa-circle-plus"></i></button>
+  </div>
+</div>
