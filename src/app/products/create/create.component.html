@@ -2,9 +2,11 @@
   <div class="row mt-4">
     <div class="col-md-6 mx-auto">
       <div class="card">
-        <div class="card-header bg-dark text-white fw-bold text-center">CREATE NEW PRODUCT</div>
+        <div class="card-header bg-dark text-white fw-bold text-center">
+          CREATE NEW PRODUCT
+        </div>
         <div class="card-body bg-dark text-white fw-bold">
-          <form>
+          <form [formGroup]="productForm" (ngSubmit)="onCreate()" #f="ngForm">
             <div class="mb-3">
               <input
                 type="text"
@@ -13,27 +15,35 @@
                 placeholder="Product Name"
                 autocomplete="off"
                 required
+                [(ngModel)]="name"
+                formControlName="name"
               />
             </div>
             <div class="mb-3">
               <input
-                type="text"
+                type="number"
                 class="form-control"
-                id="name"
+                id="price"
                 placeholder="Product Price"
                 autocomplete="off"
                 required
+                [(ngModel)]="price"
+                formControlName="price"
               />
             </div>
-            <button type="submit" class="btn btn-success w-40">
+            <button
+              type="submit"
+              class="btn btn-success w-40"
+              [disabled]="!f.valid"
+            >
               <i class="fa-solid fa-circle-plus"></i> Create Product
             </button>
           </form>
         </div>
         <div class="card-footer col bg-dark text-white fw-bold text-center">
-            <button class="btn btn-primary w-40" routerLink="/">
-              <i class="fa-sharp fa-solid fa-arrow-left "></i> Back
-            </button>
+          <button class="btn btn-primary w-40" routerLink="/">
+            <i class="fa-sharp fa-solid fa-arrow-left"></i> Back
+          </button>
         </div>
       </div>
     </div>

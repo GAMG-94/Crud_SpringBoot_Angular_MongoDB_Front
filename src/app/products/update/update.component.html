@@ -2,9 +2,9 @@
   <div class="row mt-4">
     <div class="col-md-6 mx-auto">
       <div class="card">
-        <div class="card-header bg-dark text-white fw-bold text-center">UPDATE PRODUCT</div>
+        <div class="card-header bg-dark text-white fw-bold text-center">EDIT PRODUCT</div>
         <div class="card-body bg-dark text-white fw-bold">
-          <form>
+          <form [formGroup]="productForm" (submit)="onUpdate()" #f="ngForm">
             <div class="mb-3">
               <input
                 type="text"
@@ -13,19 +13,23 @@
                 placeholder="Product Name"
                 autocomplete="off"
                 required
+                [(ngModel)]="product.name"
+                formControlName="name"
               />
             </div>
             <div class="mb-3">
               <input
-                type="text"
+                type="number"
                 class="form-control"
-                id="name"
+                id="price"
                 placeholder="Product Price"
                 autocomplete="off"
                 required
+                [(ngModel)]="product.price"
+                formControlName="price"
               />
             </div>
-            <button type="submit" class="btn btn-success w-40">
+            <button type="submit" class="btn btn-success w-40" [disabled]="!f.valid">
               <i class="fa-solid fa-file-pen"></i> Update Product
             </button>
           </form>

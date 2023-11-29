@@ -16,8 +16,8 @@
         <td>{{ prod.name }}</td>
         <td>{{ prod.price }} $</td>
         <td><div class="btn btn-outline-primary fw-bold" routerLink="/detail/{{prod.id}}">View <i class="fa-solid fa-eye"></i></div></td>
-        <td><div class="btn btn-outline-warning fw-bold" routerLink="/update">Update <i class="fa-solid fa-file-pen"></i></div></td>
-        <td><div class="btn btn-outline-danger fw-bold">Delete <i class="fa-solid fa-trash"></i></div></td>
+        <td><div class="btn btn-outline-warning fw-bold" routerLink="/update/{{prod.id}}">Edit <i class="fa-solid fa-file-pen"></i></div></td>
+        <td><div class="btn btn-outline-danger fw-bold" (click)="onDelete(prod.id)">Delete <i class="fa-solid fa-trash"></i></div></td>
       </tr>
     </tbody>
   </table>
