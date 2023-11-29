@@ -13,23 +13,26 @@ export class ProductService {
 
   constructor(private httpClient: HttpClient) { }
 
+  // Listado de productos
   public listProduct(): Observable<Product[]> {
     return this.httpClient.get<Product[]>(this.productUrl);
   }
 
+  // Detalle de los productos
   public detailProduct(id: number): Observable<Product> {
     return this.httpClient.get<Product>(this.productUrl + `/${id}`);
   }
 
+  // Creación de un producto nuevo
   public createProduct(product: Product): Observable<any> {
     return this.httpClient.post<any>(this.productUrl, product).pipe(
       catchError((err: HttpErrorResponse) => {
-        console.error(err);
         throw err;
       })
     );
   }
 
+  // Actualización de un producto
   public updateProduct(id: number, product: Product): Observable<any> {
     return this.httpClient.put<any>(this.productUrl + `/${id}`, product).pipe(
       catchError((err: HttpErrorResponse) => {
@@ -38,6 +41,7 @@ export class ProductService {
     );
   }
 
+  // Eliminación de un producto
   public deleteProduct(id: number): Observable<any> {
     return this.httpClient.delete<any>(this.productUrl + `/${id}`);
   }
